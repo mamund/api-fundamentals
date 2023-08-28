@@ -1,22 +1,23 @@
 ## Hypermedia Notes
 
-## Install
+### Install
 ```
 npm init -y
 npm install express --save
 ```
 
-## Run Server
+### Run Server
 ```
 node index.js
 ```
 
-## Run Client
+### Run Client
 ```
 curl localhost:3010/
 
 curl localhost:3010/?who=mike
+```
 
-## Reference
+### Reference
 TK
 
