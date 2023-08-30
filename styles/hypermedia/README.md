@@ -4,18 +4,17 @@
 ```
 npm init -y
 npm install express --save
+npm install sync-request --save
 ```
 
 ### Run Server
 ```
-node index.js
+node server.js
 ```
 
 ### Run Client
 ```
-curl localhost:3010/
-
-curl localhost:3010/?who=mike
+node client.js
 ```
 
 ### Reference
