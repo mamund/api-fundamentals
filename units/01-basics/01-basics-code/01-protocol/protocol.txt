@@ -1,4 +1,0 @@
-CALL http://activity-production.up.railway.app/
-
-CALL WITH-PATH $..href
-
