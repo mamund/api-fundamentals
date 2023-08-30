@@ -13,10 +13,13 @@ var url = "http://localhost:3010/";
 
 // for filling in form
 const formName = "who";
-const argName = "who";
-const argValue = "mike";
+const whoName = "who";
+const whoValue = "mike";
+const whereName = "where";
+const whereValue = "planet";
 
 // make call to root
+console.log("calling root URL...");
 response = makeRequest("GET", url, {headers:{"accept":"application/json"}});
 output = response.getBody("UTF8");
 console.log(output);
@@ -24,14 +27,25 @@ console.log(output);
 // find & fill in form
 body = JSON.parse(output);
 var form = body.hello.form;
+
+console.log("filling in form...");
 if(form && form.name.toLowerCase() === formName) {
+  var idx;
   var href = form.href;
   var method = form.method;
-  if(form.args && form.args[0] === argName) {
-    qs[form.args[0]] = argValue;
+  if(form.args) {
+    idx = form.args.indexOf(whoName);
+    if(idx!==-1) {
+      qs[form.args[idx]] = whoValue;
+    }
+    idx = form.args.indexOf(whereName);
+    if(idx!==-1) {
+      qs[form.args[idx]] = whereValue;
+    }
   }
   
   // make the form call
+  console.log("making form request...");
   response = makeRequest(method, href, {headers:{"accept":"application/json"}}, qs);
   output = response.getBody("UTF8");
   console.log(output);

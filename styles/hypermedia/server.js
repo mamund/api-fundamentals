@@ -8,11 +8,17 @@ const port = 3010
 
 var message = {hello:
   {who:"",where:"",
-    form:{name:"who", href:"http://localhost:3010/",method:"get", args:["who"]}
+    form:{name:"who", href:`http://localhost:${port}/form`,method:"get", args:["who","where"]}
   }
 };
 
 app.get('/', (req, res) => {
+  message.hello.who = req.query.who||"you";
+  message.hello.where = req.query.where||"world";
+  res.send(JSON.stringify(message,null,2))
+})
+
+app.get('/form', (req, res) => {
   message.hello.who = req.query.who||"you";
   message.hello.where = req.query.where||"world";
   res.send(JSON.stringify(message,null,2))
