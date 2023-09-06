@@ -2,13 +2,12 @@
 
 ### Installation
 ```
-npm init -y
-npm install graphql --save
+npm install
 ```
 
 ## Run Server 
 ```
-node index.js
+npm start
 ```
 
 ## Client Query

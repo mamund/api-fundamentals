@@ -5,14 +5,15 @@
 const mqtt = require('mqtt')
 
 const addr = 'mqtt://test.mosquitto.org';
-const client = mqtt.connect(addr);
+const app = mqtt.connect(addr);
 const msgTopic = "welcome";
 const greetings = ['you','me','world'];
 
-client.on('connect', function () {
+// send a random greeting every second
+app.on('connect', function () {
   setInterval(
     function() {
-      client.publish(msgTopic, 'Hello '+randomGreeting())
+      app.publish(msgTopic, 'Hello '+randomGreeting())
     },1000
   );
   console.log('server running at '+addr);

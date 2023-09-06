@@ -5,6 +5,10 @@
 const PORT = 3030;
 const WebSocketServer = require('ws');
 const wss = new WebSocketServer.Server({ port: PORT });
+const greetings = [
+  "you're still connected",
+  "thanks for sending your data",
+  "your data has been collected"];
 
 
 // Creating connection using websocket
@@ -22,6 +26,24 @@ wss.on("connection", ws => {
     
     ws.onerror = function () {
         console.log("Some Error occurred")
-    }
+    };
+
+    // send message every second
+    setInterval(
+      function() {
+        ws.send("Hello, "+randomGreeting());
+      },1000
+    );
+    
+    
 });
 console.log("The server is running on port "+PORT);
+
+
+// generate randome messages
+function randomGreeting() {
+  var max = 2;
+  var min = 0;
+  var i = Math.floor(Math.random() * (max - min + 1) + min);
+  return greetings[i];
+}

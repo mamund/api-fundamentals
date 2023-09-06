@@ -2,20 +2,17 @@
 
 ### Install
 ```
-npm init -y
-npm install ws -s
-touch server.js
-touch client.js
+npm install
 ```
 
 ### Run Server
 ```
-node server.js
+npm run server
 ```
 
 ### Run Client
 ```
-node client.js
+npm run client
 ```
 
 ### Reference

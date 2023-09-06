@@ -5,14 +5,16 @@
 const mqtt = require('mqtt')
 
 const addr = 'mqtt://test.mosquitto.org';
-const client = mqtt.connect(addr);
+const app = mqtt.connect(addr);
 const msgTopic = "welcome";
 
-client.on('connect', function () {
-  client.subscribe(msgTopic);
+// connect to server and subscribe to topic
+app.on('connect', function () {
+  app.subscribe(msgTopic);
   console.log("listening for "+msgTopic+" at "+addr)
 });
 
-client.on('message', function (topic, message) {
+// echo each time topic message is received
+app.on('message', function (topic, message) {
   console.log(message.toString())
 });

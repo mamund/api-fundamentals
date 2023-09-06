@@ -5,13 +5,19 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-var message = {hello:{who:"",{href:"/",rel:"who",args:[}};
+var message = {hello:{who:""}};
 
-app.get('/', (req, res) => {
-  message.hello.who = req.query.who||"world";
+app.get('/welcome', (req, res) => {
+  message.hello.who = sayHello(req);
   res.send(JSON.stringify(message,null,2))
-})
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
+
+function sayHello(req) {
+  var who = "";
+  who = req.query.who||"world";
+  return who;
+}

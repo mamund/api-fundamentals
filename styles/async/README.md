@@ -2,18 +2,17 @@
 
 ### Install
 ```
-npm init -y
-npm install mqtt -s
+npm install
 ```
 
 ### Run Server
 ```
-node publisher.js
+npm run publisher
 ```
 
 ### Run Client
 ```
-node subscriber.js
+npm run subscriber
 ```
 
 ### Reference

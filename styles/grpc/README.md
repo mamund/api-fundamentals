@@ -2,19 +2,17 @@
 
 ### Install
 ```
-npm init -y
-npm install @grpc/grpc-js -s
-npm install @grpc/proto-loader -s
+npm install
 ```
 
 ### Run Server
 ```
-node server.js
+npm run server
 ```
 
 ### Run Client
 ```
-node client.js
+npm run client
 ```
 
 ### Reference

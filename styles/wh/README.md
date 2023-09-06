@@ -2,15 +2,12 @@
 
 ### Install
 ```
-touch index.js
-npm init -y
-npm install express -s
-npm install body-parser -s
+npm install
 ```
 
 ### Run Server
 ```
-node index.js
+npm start
 ```
 
 ### Run client
