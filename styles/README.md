@@ -1,3 +1,3 @@
 ### API Style Examples
 
-* [REST API[(rest/)
+* [REST API](rest/)
