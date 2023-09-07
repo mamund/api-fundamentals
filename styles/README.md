@@ -4,6 +4,6 @@
 * [gRPC](grpc/)
 * [GraphQL](graphql/)
 * [Async](async/)
-* [Hypermedia[(hypermedia/)
+* [Hypermedia](hypermedia/)
 * [Webhooks](wh/)
 * [Websockets](ws/)
