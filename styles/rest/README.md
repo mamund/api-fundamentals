@@ -12,9 +12,9 @@ node index.js
 
 ### Run Client
 ```
-curl localhost:3000/
+curl localhost:3000/welcome
 
-curl localhost:3000/?who=mike
+curl localhost:3000/welcome?who=mike
 ```
 
 ### Reference
