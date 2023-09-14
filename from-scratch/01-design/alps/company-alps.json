@@ -1,0 +1,126 @@
+{
+  "$schema" : "https://alps-io.github.io/schemas/alps.json",
+  "alps" : {
+    "version" : "1.0",
+    "title" : "Company API at BigCo, Inc.",
+    "doc" : {
+      "value" : "We keep track of companies for BigCo, Inc."
+    },
+    "descriptor" : [
+      {"id" : "companyId", "type" : "semantic", "tag" : "ontology", "title" : "Unique identity value"},
+      {"id" : "companyName", "type" : "semantic", "tag" : "ontology", "title" : "Name of the company"},
+      {"id" : "streetAddress", "type" : "semantic", "tag" : "ontology", "title" : "Company's full street address"},
+      {"id" : "city", "type" : "semantic", "tag" : "ontology", "title" : "City where the company is located"},
+      {"id" : "stateProvince", "type" : "semantic", "tag" : "ontology", "title" : "Company's state or province"},
+      {"id" : "postalCode", "type" : "semantic", "tag" : "ontology", "title" : "Post code for the company"},
+      {"id" : "country", "type" : "semantic", "tag" : "ontology", "title" : "Country where the company is located"},
+      {"id" : "telephone", "type" : "semantic", "tag" : "ontology", "title" : "complete telephone for voice calls"},
+      {"id" : "email", "type" : "semantic", "tag" : "ontology", "title" : "Email for company contact person"},
+      {"id" : "status", "type" : "semantic", "tag" : "ontology", "title" : "Status of this record (pending, active, suspended, closed)"},
+      {"id" : "dateCreated", "type" : "semantic", "tag" : "ontology", "title" : "Date/time this record was created"},
+      {"id" : "dateUpdated", "type" : "semantic", "tag" : "ontology", "title" : "Date/time this record was last updated"},
+      
+      {"id" : "item", "type" : "semantic", "tag" : "ontology",
+        "descriptor" : [
+          {"href" : "#companyId"},
+          {"href" : "#companyName"},
+          {"href" : "#streetAddress"},
+          {"href" : "#city"},
+          {"href" : "#stateProvince"},
+          {"href" : "#postalCode"},
+          {"href" : "#country"},
+          {"href" : "#telephone"},
+          {"href" : "#email"},
+          {"href" : "#status"},
+          {"href" : "#dateCreated"},
+          {"href" : "#dateUpdated"}
+        ]
+      },
+      
+      {"id" : "home", "type" : "semantic", "tag" : "taxonomy", "title" : "Home resource",
+        "descriptor" : [
+          {"href" : "#gotoList"},
+          {"href" : "#gotoHome"}
+        ]
+      },
+      {"id" : "list", "type" : "semantic", "tag" : "taxonomy", "title" : "List resource",
+        "descriptor" : [
+          {"href" : "#item"},
+          {"href" : "#gotoItem"},
+          {"href" : "#doCreate"},
+          {"href" : "#gotoFilter"},
+          {"href" : "#gotoList"},
+          {"href" : "#gotoHome"}
+        ]
+      },
+      {"id" : "item", "type" : "semantic", "tag" : "taxonomy", "title" : "Item resource",
+        "descriptor" : [
+          {"href" : "#item"},
+          {"href" : "#gotoItem"},
+          {"href" : "#doUpdate"},
+          {"href" : "#doStatus"},
+          {"href" : "#doRemove"},
+          {"href" : "#gotoFilter"},
+          {"href" : "#gotoList"},
+          {"href" : "#gotoHome"}
+        ]
+      },
+      
+      {"id" : "gotoHome", "type" : "safe", "tag" : "choreography", "rt" : "#home", 
+        "title" : "Navigate to Home resource"
+      },
+      {"id" : "gotoList", "type" : "safe", "tag" : "choreography", "rt" : "#list", 
+        "title" : "Navigate to List resource"
+      },
+      {"id" : "gotoItem", "type" : "safe", "tag" : "choreography", "rt" : "#item", 
+        "title" : "Navigate to Item resource"
+      },
+      {"id" : "gotoFilter", "type" : "safe", "tag" : "choreography", "rt" : "#list", 
+        "title" : "Navigate to filtered List resource"
+      },
+      {"id" : "doCreate", "type" : "unsafe", "tag" : "choreography", "rt" : "#item", 
+        "title" : "Create a new item",
+        "descriptor" : [
+          {"href" : "#companyId"},
+          {"href" : "#companyName"},
+          {"href" : "#streetAddress"},
+          {"href" : "#city"},
+          {"href" : "#stateProvince"},
+          {"href" : "#postalCode"},
+          {"href" : "#country"},
+          {"href" : "#telephone"},
+          {"href" : "#email"},
+          {"href" : "#status"}
+        ]
+      },
+      {"id" : "doUpdate", "type" : "idempotent", "tag" : "choreography", "rt" : "#item", 
+        "title" : "Modify an existing item",
+        "descriptor" : [
+          {"href" : "#companyId"},
+          {"href" : "#companyName"},
+          {"href" : "#streetAddress"},
+          {"href" : "#city"},
+          {"href" : "#stateProvince"},
+          {"href" : "#postalCode"},
+          {"href" : "#country"},
+          {"href" : "#telephone"},
+          {"href" : "#email"},
+          {"href" : "#status"}
+        ]
+      },
+      {"id" : "doStatus", "type" : "idempotent", "tag" : "choreography", "rt" : "#item", 
+        "title" : "Update the status of an item",
+        "descriptor" : [
+          {"href" : "#companyId"},
+          {"href" : "#status"}
+        ]
+      },
+      {"id" : "doRemove", "type" : "idempotent", "tag" : "choreography", "rt" : "#list", 
+        "title" : "Remove in exsiting item",
+        "descriptor" : [
+          {"href" : "#companyId"}
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+digraph application_state_diagram {
+  graph [
+    labelloc="t";
+    fontname="Helvetica"
+    label="Company API at BigCo, Inc.";
+    URL="index.html" target="_parent"
+  ];
+  node [shape = box, style = "bold,filled" fillcolor="lightgray"];
+
+    item [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>item<br />(item)<br /></td></tr></table>>,shape=box URL="docs/semantic.item.html" target="_parent"]
+    list [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>list<br />(item)<br /></td></tr></table>>,shape=box URL="docs/semantic.list.html" target="_parent"]
+
+    home -> home [label = <gotoHome (safe)> URL="docs/safe.gotoHome.html" target="_parent" fontsize=13];
+    home -> list [label = <gotoList (safe)> URL="docs/safe.gotoList.html" target="_parent" fontsize=13];
+    item -> home [label = <gotoHome (safe)> URL="docs/safe.gotoHome.html" target="_parent" fontsize=13];
+    item -> item [label=<<table border="0"><tr><td align="left" href="docs/idempotent.doStatus.html">doStatus (idempotent)</td></tr><tr><td align="left" href="docs/idempotent.doUpdate.html">doUpdate (idempotent)</td></tr><tr><td align="left" href="docs/safe.gotoItem.html">gotoItem (safe)</td></tr></table>> fontsize=13];
+    item -> list [label=<<table border="0"><tr><td align="left" href="docs/idempotent.doRemove.html">doRemove (idempotent)</td></tr><tr><td align="left" href="docs/safe.gotoFilter.html">gotoFilter (safe)</td></tr><tr><td align="left" href="docs/safe.gotoList.html">gotoList (safe)</td></tr></table>> fontsize=13];
+    list -> home [label = <gotoHome (safe)> URL="docs/safe.gotoHome.html" target="_parent" fontsize=13];
+    list -> item [label=<<table border="0"><tr><td align="left" href="docs/unsafe.doCreate.html">doCreate (unsafe)</td></tr><tr><td align="left" href="docs/safe.gotoItem.html">gotoItem (safe)</td></tr></table>> fontsize=13];
+    list -> list [label=<<table border="0"><tr><td align="left" href="docs/safe.gotoFilter.html">gotoFilter (safe)</td></tr><tr><td align="left" href="docs/safe.gotoList.html">gotoList (safe)</td></tr></table>> fontsize=13];
+
+    home [label = <home> URL="docs/semantic.home.html" target="_parent"]
+
+}
