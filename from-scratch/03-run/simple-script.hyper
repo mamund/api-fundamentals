@@ -13,7 +13,7 @@ CALL WITH-FORM create WITH-STACK # add a new record using memory
 CALL WITH-FORM list WITH-ACCEPT application/forms+json
 SHOW PATH $..items.length # count records in the list
 
-CALL WITH-FORM read_q1p0w2o9
+CALL WITH-FORM read_q1p0w2o9 WITH-ACCEPT application/forms+json
 CALL WITH-FORM remove_q1p0w2o9 # remove added record
 
 CALL WITH-FORM list WITH-ACCEPT application/forms+json
