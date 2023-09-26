@@ -1,22 +1,15 @@
-## GraphQL Notes
+#!/bin/bash
 
-### Installation
-```
-npm install
-```
+# test graphql queries 
+# 2023-09 @mamund
 
-## Run Server 
-```
-npm start
-```
+# uses:
+# - curl to make HTTP request
+# - jq to format JSON responses
 
-## Client Query
+clear
 
-run the single test script (`testing.sh`)
-
--OR-
-
-```
+# no args
 curl -X POST \
 -H "Content-Type:application/json" \
 -d '{"query":"{hello}"}' \
@@ -36,7 +29,5 @@ curl -X POST \
 -d '{"query":"{hello(who:\"mike\",where:\"here\")}"}' \
 --silent --show-error --fail \
 localhost:4000/graphql | jq .
-```
 
-### Reference
-https://graphql.org/graphql-js/graphql-clients/
+# EOF
