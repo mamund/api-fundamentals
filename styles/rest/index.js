@@ -7,9 +7,14 @@ const port = 3000
 
 var message = {hello:{who:""}};
 
+app.get('/', (req, res) => {
+  message = {hello:{who:""}};
+  res.send(JSON.stringify(message,null,2));
+});
+
 app.get('/welcome', (req, res) => {
   message.hello.who = sayHello(req);
-  res.send(JSON.stringify(message,null,2))
+  res.send(JSON.stringify(message,null,2));
 });
 
 app.listen(port, () => {
