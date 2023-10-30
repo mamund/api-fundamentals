@@ -31,16 +31,20 @@ wss.on("connection", ws => {
     // send message every second
     setInterval(
       function() {
-        ws.send("Hello, "+randomGreeting());
+        ws.send(sayHello());
       },1000
     );
-    
-    
 });
 console.log("The server is running on port "+PORT);
 
+// craft return message
+function sayHello() {
+  var rtn = "";
+  rtn = "Hello, "+randomGreeting();
+  return rtn;
+}
 
-// generate randome messages
+// generate random messages
 function randomGreeting() {
   var max = 2;
   var min = 0;

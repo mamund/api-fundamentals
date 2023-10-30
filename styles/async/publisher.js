@@ -13,11 +13,18 @@ const greetings = ['you','me','world'];
 app.on('connect', function () {
   setInterval(
     function() {
-      app.publish(msgTopic, 'Hello '+randomGreeting())
+      app.publish(msgTopic, sayHello())
     },1000
   );
   console.log('server running at '+addr);
 });
+
+// craft return message
+function sayHello() {
+  var rtn = "";
+  rtn = "Hello, "+randomGreeting();
+  return rtn;
+}
 
 function randomGreeting() {
   var max = 2;

@@ -8,7 +8,7 @@ const port = 3000
 var message = {hello:{who:""}};
 
 app.get('/', (req, res) => {
-  message = {hello:{who:""}};
+  message.hello.who = "";
   res.send(JSON.stringify(message,null,2));
 });
 
