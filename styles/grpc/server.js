@@ -10,6 +10,9 @@ const addr = 'localhost:3040';
 const packageDef = protoLoader.loadSync(protoPath);
 const helloProto = grpc.loadPackageDefinition(packageDef);
 
+/*******************************
+ * work done here
+ *******************************/
 function sayHello(call, callback) {
   callback(null, 
     {message: 'Hello ' + 
@@ -19,6 +22,9 @@ function sayHello(call, callback) {
   );
 }
 
+/*************************************
+ * GRPC interface
+ *************************************/
 function main() {
   var server = new grpc.Server();
   server.addService(helloProto.Welcome.service,
