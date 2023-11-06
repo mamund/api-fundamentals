@@ -34,19 +34,28 @@ app.listen(port, () => {
 // the root resource
 app.get('/', (req, res) => {
   message.hello.who = "";
+  res.set("content-type", "application/json");
   res.send(JSON.stringify(message,null,2));
 });
 
 // the welcome resource
 app.get('/welcome', (req, res) => {
   message.hello.who = sayHello(req);
+  res.set("content-type", "application/json");
   res.send(JSON.stringify(message,null,2));
 });
 
 // stub for creating a resource
 app.post('/welcome', (req, res) => {
-  console.log(req.body);
   message.hello.who = req.body.who||"";
+  res.set("content-type", "application/json");
+  res.send(JSON.stringify(message,null,2));
+});
+
+// stub for deleting a resource
+app.delete('/welcome/mike', (req,res) => {
+  message.hello.who = "";
+  res.set("content-type", "application/json");
   res.send(JSON.stringify(message,null,2));
 });
 
