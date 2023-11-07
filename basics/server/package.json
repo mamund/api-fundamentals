@@ -1,12 +1,13 @@
 {
   "name": "basics",
   "version": "1.0.0",
-  "description": "",
+  "description": "Example of using a services library for a Web API",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Mike Amundsen (@mamund)",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
