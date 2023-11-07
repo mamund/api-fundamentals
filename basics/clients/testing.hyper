@@ -1,0 +1,7 @@
+# hypermedia client scripting
+
+CALL http://localhost:4000/read WITH-QUERY {"action":"add","x":"10","y":"10"}
+CALL http://localhost:4000/write WITH-BODY action=multiply&x=10&y=10 WITH-METHOD post
+CALL http://localhost:4000/subtraction?x=100&y=25
+
+# EOD
