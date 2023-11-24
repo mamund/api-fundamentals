@@ -1,6 +1,7 @@
 // API Fundamentals
 // 2023-08 : mike amundsen (@mamund)
 //
+const hello = require("./../_services/hello.js");
 const express = require('express')
 const app = express()
 const port = 3000
@@ -16,10 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 var message = {hello:{who:""}};
 
 // actual work done
-function sayHello(req) {
-  var who = "";
-  who = req.query.who||"world";
-  return who;
+function sayHello(args) {
+  var rtn = {};
+  rtn = hello.welcome(args);
+  return rtn;
 }
 
 /********************************************************
@@ -40,14 +41,24 @@ app.get('/', (req, res) => {
 
 // the welcome resource
 app.get('/welcome', (req, res) => {
-  message.hello.who = sayHello(req);
+  var args = {};
+  args.who = req.query.who||"world";
+  args.where = req.query.where||"there";
+  
+  message.hello = sayHello(args);
+  
   res.set("content-type", "application/json");
   res.send(JSON.stringify(message,null,2));
 });
 
 // stub for creating a resource
 app.post('/welcome', (req, res) => {
-  message.hello.who = req.body.who||"";
+  var args = {};
+  args.who = req.body.who||"world";
+  args.where = req.body.where||"there";
+  
+  message.hello = sayHello(args);
+  
   res.set("content-type", "application/json");
   res.send(JSON.stringify(message,null,2));
 });

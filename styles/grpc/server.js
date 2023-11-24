@@ -1,7 +1,7 @@
 // API Fundamentals
 // 2023-08 : mike amundsen (@mamund)
 // style: gRPC (server)
-
+const hello = require('./../_services/hello.js');
 const grpc = require("@grpc/grpc-js");
 const protoLoader = require("@grpc/proto-loader");
 const protoPath = "./hello.proto";
@@ -13,13 +13,14 @@ const helloProto = grpc.loadPackageDefinition(packageDef);
 /*******************************
  * work done here
  *******************************/
-function sayHello(call, callback) {
-  callback(null, 
-    {message: 'Hello ' + 
-      (call.request.who||"") + " " + 
-      (call.request.where||"world")
-    }
-  );
+function sayHello(call, cbFunc) {
+  var args = {};
+  args.who = call.request.who || "";
+  args.where = call.request.where || "";
+  
+  answer = hello.welcome(args);
+  
+  cbFunc(null, {message:JSON.stringify(answer,null,2)});
 }
 
 /*************************************

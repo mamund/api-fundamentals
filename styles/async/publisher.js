@@ -2,12 +2,14 @@
 // 2023-08 : mike amundsen (@mamund)
 // style: async (publisher)
 
+const hello = require('./../_services/hello.js');
 const mqtt = require('mqtt')
 
 const addr = 'mqtt://test.mosquitto.org';
 const app = mqtt.connect(addr);
 const msgTopic = "welcome";
-const greetings = ['you','me','world'];
+const greetings = ['you','me','mike'];
+const location = ['there','here','world']
 
 // send a random greeting every second
 app.on('connect', function () {
@@ -19,11 +21,16 @@ app.on('connect', function () {
   console.log('server running at '+addr);
 });
 
-// craft return message
+// create return message
 function sayHello() {
+  var args = {};
   var rtn = "";
-  rtn = "Hello, "+randomGreeting();
-  return rtn;
+  args.who = randomGreeting();
+  args.where = randomLocation();
+  
+  rtn = hello.welcome(args);
+  
+  return JSON.stringify(rtn, null, 2);
 }
 
 function randomGreeting() {
@@ -31,4 +38,11 @@ function randomGreeting() {
   var min = 0;
   var i = Math.floor(Math.random() * (max - min + 1) + min);
   return greetings[i];
+}
+
+function randomLocation() {
+  var max = 2;
+  var min = 0;
+  var i = Math.floor(Math.random() * (max - min + 1) + min);
+  return location[i];
 }

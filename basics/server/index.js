@@ -42,7 +42,7 @@ app.get('/read', (req, res) => {
   res.send(JSON.stringify(message,null,2)+"\n");
 });
 
-// writing compute results (?)
+// writing compute results 
 app.post('/write', (req, res) => {
   var args = {};
   args.action = req.body.action||"";

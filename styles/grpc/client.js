@@ -24,12 +24,12 @@ function main() {
 
   // simple call
   client.sayHello({},function(err,response) {
-    console.log('Greeting:', response.message);
+    console.log(response.message);
   });
   
   // call with args
-  client.sayHello({who: 'you', where: 'there'}, function(err, response) {
-    console.log('Greeting:', response.message);
+  client.sayHello({who: 'mike', where: 'mars'}, function(err, response) {
+    console.log(response.message);
   });
 }
 
