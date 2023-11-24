@@ -2,6 +2,7 @@
 // 2023-08 : mike amundsen (@mamund)
 // style: hypermedia (server)
 
+const hello = require('./../_services/hello.js');
 const express = require('express')
 const app = express()
 const port = 3010
@@ -20,21 +21,41 @@ var message = {
 };
 
 app.get('/', (req, res) => {
-  message.hello.who = sayWho(req); //req.query.who||"you";
-  message.hello.where = sayWhere(req); //req.query.where||"world";
+  var args = {};
+  var answer = {};
+  args.who = req.query.who;
+  args.where = req.query.where;
+  
+  answer = sayHello(args);
+  
+  message.hello.who = answer.who;
+  message.hello.where = answer.where;
   res.send(JSON.stringify(message,null,2))
 })
 
 app.get('/form', (req, res) => {
-  message.hello.who = sayWho(req); //req.query.who||"you";
-  message.hello.where = sayWhere(req); //req.query.where||"world";
-  res.send(JSON.stringify(message,null,2))
+  var args = {};
+  var answer = {};
+  args.who = req.query.who;
+  args.where = req.query.where;
+  
+  answer = sayHello(args);
+  
+  message.hello.who = answer.who;
+  message.hello.where = answer.where;
+  res.send(JSON.stringify(message,null,2));
 })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
+function sayHello(args) {
+  var rtn = hello.welcome(args);  
+  return rtn;
+}
+
+/*
 function sayWho(req) {
   return req.query.who||"you";
 }
@@ -42,3 +63,4 @@ function sayWho(req) {
 function sayWhere(req) {
   return req.query.where||"world";
 }
+*/

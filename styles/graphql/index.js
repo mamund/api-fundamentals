@@ -1,7 +1,7 @@
 // API Fundamentals
 // 2023-08 : @mamund
 // style : GraphQL
-
+var hello = require('./../_services/hello.js');
 var express = require("express")
 var { graphqlHTTP } = require("express-graphql")
 var { buildSchema } = require("graphql")
@@ -16,7 +16,15 @@ var schema = buildSchema(`
 // The root provides a resolver function for each API endpoint
 var root = {
   hello: ({who,where}) => {
-    return "Hello "+(who||"")+" "+(where||"world") 
+    var answer = {};
+    var args = {};
+    
+    args.who = who;
+    args.where = where;
+    
+    answer = hello.welcome(args);
+    
+    return "Hello "+(answer.who)+" "+(answer.where) 
   },
 }
 

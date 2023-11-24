@@ -5,7 +5,7 @@
 const PORT = 3030;
 const WebSocketServer = require('ws');
 const wss = new WebSocketServer.Server({ port: PORT });
-const greetings = [
+const replies = [
   "you're still connected",
   "thanks for sending your data",
   "your data has been collected"];
@@ -13,7 +13,7 @@ const greetings = [
 
 // Creating connection using websocket
 wss.on("connection", ws => {
-    console.log("new client connected");
+    console.log("Client connected");
     ws.send('Welcome, you are connected!');
  
     ws.on("message", data => {
@@ -21,7 +21,7 @@ wss.on("connection", ws => {
     });
  
     ws.on("close", () => {
-        console.log("the client has connected");
+        console.log("Client has closed the connection");
     });
     
     ws.onerror = function () {
@@ -40,14 +40,14 @@ console.log("The server is running on port "+PORT);
 // craft return message
 function sayHello() {
   var rtn = "";
-  rtn = "Hello, "+randomGreeting();
+  rtn = "Hello, "+randomReply();
   return rtn;
 }
 
 // generate random messages
-function randomGreeting() {
+function randomReply() {
   var max = 2;
   var min = 0;
   var i = Math.floor(Math.random() * (max - min + 1) + min);
-  return greetings[i];
+  return replies[i];
 }
