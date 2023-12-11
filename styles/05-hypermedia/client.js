@@ -5,51 +5,77 @@
 const request = require('sync-request');
 const querystring = require('querystring');
 
-var response = null;
-var output = "";
-var body = {};
 var qs = {};
+var data = "";
 var url = "http://localhost:3010/";
 
-// for filling in form
-const formName = "who";
+// shared state for filling in form
+const formName = "welcome";
 const whoData = {"name":"who","value":"mike"}
 const whereData = {"name":"where","value":"planet"}
 
+// make http calls
+data = callRoot();
+data = callForm(data);
+
+return
+// *** eof ***
+
+/***********************************************
+  HTTP processing
+************************************************/
+
 // make call to root
-console.log("calling root URL...");
-response = makeRequest("GET", url, {headers:{"accept":"application/json"}});
-output = response.getBody("UTF8");
-console.log(output);
-
-// find & fill in form
-body = JSON.parse(output);
-var form = body.hello.form;
-
-console.log("filling in form...");
-if(form && form.name.toLowerCase() === formName) {
-  var idx;
-  var href = form.href;
-  var method = form.method;
-  if(form.args) {
-    idx = form.args.indexOf(whoData.name);
-    if(idx!==-1) {
-      qs[form.args[idx]] = whoData.value;
-    }
-    idx = form.args.indexOf(whereData.name);
-    if(idx!==-1) {
-      qs[form.args[idx]] = whereData.value;
-    }
-  }
+function callRoot() {
+  var rtn = "";
+  var response = null;
   
-  // make the form call
-  console.log("making form request...");
-  response = makeRequest(method, href, {headers:{"accept":"application/json"}}, qs);
-  output = response.getBody("UTF8");
-  console.log(output);
+  console.log("calling root URL...");
+  response = makeRequest("GET", url, {headers:{"accept":"application/json"}});
+  rtn = response.getBody("UTF8");
+  console.log(rtn);
+  
+  return rtn;
 }
 
-// handle http conversation (request/response)
+// find & fill in form
+function callForm(data) {
+  var rtn = "";
+  var response = null; 
+  var body = {};
+  var form = {};
+  var idx, href, method;
+
+  console.log("filling in form...");
+  
+  body = JSON.parse(data);
+  form = body.hello.form;
+
+  if(form && form.name.toLowerCase() === formName) {
+    href = form.href;
+    method = form.method;
+    if(form.args) {
+      idx = form.args.indexOf(whoData.name);
+      if(idx!==-1) {
+        qs[form.args[idx]] = whoData.value;
+      }
+      idx = form.args.indexOf(whereData.name);
+      if(idx!==-1) {
+        qs[form.args[idx]] = whereData.value;
+      }
+    }
+    
+    // make the form call
+    console.log("making form request...");
+    response = makeRequest(method, href, 
+      {headers:{"accept":"application/json"}}, qs);
+    rtn = response.getBody("UTF8");
+    console.log(rtn);
+  }
+  return rtn
+}
+
+// handle http conversations (request/response)
 function makeRequest(method,url,headers,body) {
   var rt = {};
   var href = url;

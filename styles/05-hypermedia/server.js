@@ -7,25 +7,31 @@ const express = require('express')
 const app = express()
 const port = 3010
 
+/**************************************************
+  external calls
+***************************************************/
+// call to external service
+function sayHello(args) {
+  var rtn = hello.welcome(args);  
+  return rtn;
+}
+
+/**************************************************
+  HTTP handling
+***************************************************/
 // shared message/document
 var message = {
   hello:
   {
     who:"",where:"",
     form:{
-      name:"who", 
+      name:"welcome", 
       href:`http://localhost:${port}/form`,
       method:"get", 
       args:["who","where"]
     }
   }
 };
-
-// call to external service
-function sayHello(args) {
-  var rtn = hello.welcome(args);  
-  return rtn;
-}
 
 // listen for http on $port
 app.listen(port, () => {
