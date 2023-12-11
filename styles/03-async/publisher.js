@@ -33,6 +33,7 @@ function sayHello() {
   return JSON.stringify(rtn, null, 2);
 }
 
+// pick a random "who" value
 function randomGreeting() {
   var max = 2;
   var min = 0;
@@ -40,6 +41,7 @@ function randomGreeting() {
   return greetings[i];
 }
 
+// pick a random "where" value
 function randomLocation() {
   var max = 2;
   var min = 0;
