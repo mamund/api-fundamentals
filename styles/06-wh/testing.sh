@@ -10,14 +10,21 @@
 
 curl -X POST \
 -H "Content-Type: application/json" \
--d '{"event":"welcome", "data": {"message": "Hello, World!"}}' \
+-d '{"when":"now","what":"nothing"}' \
 --silent --show-error --fail \
 http://localhost:3020/webhook
 echo .
 
 curl -X POST \
 -H "Content-Type: application/json" \
--d '{"event":"welcome", "data": {"message": "Hi there, everyone"}}' \
+-d '{"who":"me"}' \
+--silent --show-error --fail \
+http://localhost:3020/webhook
+echo .
+
+curl -X POST \
+-H "Content-Type: application/json" \
+-d '{"who":"mike","where":"mars","when":"now"}' \
 --silent --show-error --fail \
 http://localhost:3020/webhook
 echo .

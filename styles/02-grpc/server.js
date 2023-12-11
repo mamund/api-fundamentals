@@ -1,7 +1,7 @@
 // API Fundamentals
 // 2023-08 : mike amundsen (@mamund)
 // style: gRPC (server)
-const hello = require('./../_services/hello.js');
+const hello = require('./../services/hello.js');
 const grpc = require("@grpc/grpc-js");
 const protoLoader = require("@grpc/proto-loader");
 const protoPath = "./hello.proto";

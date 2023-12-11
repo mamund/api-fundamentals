@@ -11,15 +11,13 @@
   <script>
     const PORT = 3030;
     const ws = new WebSocket("ws://localhost:"+PORT);
-    var p = documents.getElementById("output");
+    var p = document.getElementById("output");
 
     ws.addEventListener("open", () =>{
-      console.log("We are connected");
       ws.send("How are you?");
     });
  
     ws.addEventListener('message', function (event) {
-      console.log(event.data);
       p.innerText = event.data;
     });
   </script>

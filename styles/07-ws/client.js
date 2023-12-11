@@ -5,7 +5,7 @@
 const PORT = 3030;
 const WebSocket = require('ws')
 const ws = new WebSocket('ws://localhost:'+PORT);
-const hello = require('./../_services/hello.js');
+const hello = require('./../services/hello.js');
 const greetings = ['you','me','mike'];
 const location = ['here','there','mars']
 

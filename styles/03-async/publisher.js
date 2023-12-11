@@ -2,7 +2,7 @@
 // 2023-08 : mike amundsen (@mamund)
 // style: async (publisher)
 
-const hello = require('./../_services/hello.js');
+const hello = require('./../services/hello.js');
 const mqtt = require('mqtt')
 
 const addr = 'mqtt://test.mosquitto.org';

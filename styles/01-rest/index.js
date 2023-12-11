@@ -1,7 +1,7 @@
 // API Fundamentals
 // 2023-08 : mike amundsen (@mamund)
 //
-const hello = require("./../_services/hello.js");
+const hello = require("./../services/hello.js");
 const express = require('express')
 const app = express()
 const port = 3000

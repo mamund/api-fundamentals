@@ -1,7 +1,7 @@
 // API Fundamentals
 // 2023-08 : @mamund
 // style : GraphQL
-var hello = require('./../_services/hello.js');
+var hello = require('./../services/hello.js');
 var express = require("express")
 var { graphqlHTTP } = require("express-graphql")
 var { buildSchema } = require("graphql")

@@ -2,7 +2,7 @@
 // 2023-08 : mike amundsen (@mamund)
 // style: Webhooks (receiver)
 
-
+const hello = require('./../services/hello.js');
 const express = require('express');
 const bodyParser = require('body-parser');
 const PORT = 3020;
@@ -12,10 +12,14 @@ app.use(bodyParser.json());
 
 // echo any message sent to you
 app.post('/webhook', (req, res) => {
-    console.log('Received Webhook:', req.body);
-    res.status(200).send('OK');
+    var answer = {}
+    answer.message = hello.welcome(req.body);
+    console.log('Received: '+JSON.stringify(req.body,null,2));
+    res.status(200).send(JSON.stringify(answer,null,2));
 });
 
 app.listen(PORT, () => {
     console.log(`Webhook receiver listening on port ${PORT}`);
 });
+
+
