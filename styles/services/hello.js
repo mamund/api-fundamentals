@@ -8,8 +8,8 @@ const hello = (args) => {
   var where = args.where || "there";
   var answer = {};
   
-  answer.who = who;
-  answer.where = where;
+  answer.who = who.toUpperCase();
+  answer.where = where.toUpperCase();
   
   return answer;
 }
