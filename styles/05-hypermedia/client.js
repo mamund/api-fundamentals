@@ -13,10 +13,8 @@ var url = "http://localhost:3010/";
 
 // for filling in form
 const formName = "who";
-const whoName = "who";
-const whoValue = "mike";
-const whereName = "where";
-const whereValue = "planet";
+const whoData = {"name":"who","value":"mike"}
+const whereData = {"name":"where","value":"planet"}
 
 // make call to root
 console.log("calling root URL...");
@@ -34,13 +32,13 @@ if(form && form.name.toLowerCase() === formName) {
   var href = form.href;
   var method = form.method;
   if(form.args) {
-    idx = form.args.indexOf(whoName);
+    idx = form.args.indexOf(whoData.name);
     if(idx!==-1) {
-      qs[form.args[idx]] = whoValue;
+      qs[form.args[idx]] = whoData.value;
     }
-    idx = form.args.indexOf(whereName);
+    idx = form.args.indexOf(whereData.name);
     if(idx!==-1) {
-      qs[form.args[idx]] = whereValue;
+      qs[form.args[idx]] = whereData.value;
     }
   }
   
@@ -51,7 +49,7 @@ if(form && form.name.toLowerCase() === formName) {
   console.log(output);
 }
 
-// general http conversation
+// handle http conversation (request/response)
 function makeRequest(method,url,headers,body) {
   var rt = {};
   var href = url;

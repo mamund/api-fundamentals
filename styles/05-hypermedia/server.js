@@ -7,6 +7,7 @@ const express = require('express')
 const app = express()
 const port = 3010
 
+// shared message/document
 var message = {
   hello:
   {
@@ -20,6 +21,18 @@ var message = {
   }
 };
 
+// call to external service
+function sayHello(args) {
+  var rtn = hello.welcome(args);  
+  return rtn;
+}
+
+// listen for http on $port
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
+
+// default root handling
 app.get('/', (req, res) => {
   var args = {};
   var answer = {};
@@ -33,6 +46,7 @@ app.get('/', (req, res) => {
   res.send(JSON.stringify(message,null,2))
 })
 
+// advertised form handling
 app.get('/form', (req, res) => {
   var args = {};
   var answer = {};
@@ -46,21 +60,4 @@ app.get('/form', (req, res) => {
   res.send(JSON.stringify(message,null,2));
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})
 
-function sayHello(args) {
-  var rtn = hello.welcome(args);  
-  return rtn;
-}
-
-/*
-function sayWho(req) {
-  return req.query.who||"you";
-}
-
-function sayWhere(req) {
-  return req.query.where||"world";
-}
-*/
