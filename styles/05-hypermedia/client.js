@@ -49,7 +49,7 @@ function callForm(data) {
   console.log("filling in form...");
   
   body = JSON.parse(data);
-  form = body.hello.form;
+  form = body.hello.form||null;
 
   if(form && form.name.toLowerCase() === formName) {
     href = form.href;
