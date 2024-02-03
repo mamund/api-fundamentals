@@ -5,11 +5,13 @@
 const hello = require('./../services/hello.js');
 const mqtt = require('mqtt')
 
-const addr = 'mqtt://test.mosquitto.org';
-const app = mqtt.connect(addr);
 const msgTopic = "welcome";
 const greetings = ['you','me','mike'];
 const location = ['there','here','world']
+
+// connect to broker
+const addr = 'mqtt://test.mosquitto.org';
+const app = mqtt.connect(addr);
 
 // send a random greeting every second
 app.on('connect', function () {
@@ -21,16 +23,19 @@ app.on('connect', function () {
   console.log('server running at '+addr);
 });
 
-// create return message
+// create topic message
 function sayHello() {
   var args = {};
-  var rtn = "";
+  var rtn = null;
+  var msg = {};
   args.who = randomGreeting();
   args.where = randomLocation();
   
-  rtn = hello.welcome(args);
+  msg.topic = msgTopic;
+  msg.timestamp = new Date().toLocaleString();
+  msg.message = hello.welcome(args);
   
-  return JSON.stringify(rtn, null, 2);
+  return JSON.stringify(msg, null, 2);
 }
 
 // pick a random "who" value
