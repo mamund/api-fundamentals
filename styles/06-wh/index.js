@@ -61,7 +61,7 @@ function sendAlerts(list) {
     try {
       res = request("POST", url, {json:body});
     } catch (err) {
-      // na
+      // ignore any failed deliveries
     }
     console.log(res.getBody('utf-8'));
   });

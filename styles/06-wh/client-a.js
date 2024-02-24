@@ -11,9 +11,9 @@ const app = express();
 app.use(bodyParser.json());
 
 const registerURL = "http://localhost:3020/webhook";
-const url = "http://localhost:3030/event"
+const thisURL = "http://localhost:3030/event"
 
-registerClient();
+registerClient(registerURL,thisURL);
 
 /**********************************************
   HTTP processing
@@ -23,7 +23,7 @@ registerClient();
 app.post('/event', (req, res) => {
 
   console.log("Event notice received.");
-  console.log(req.body);
+  console.log(JSON.stringify(req.body,null,2));
   console.log("");
   
   res.status(200).send("OK");
@@ -36,15 +36,15 @@ app.listen(PORT, () => {
 });
 
 // register this cliennt for alerts
-function registerClient() {
+function registerClient(server,client) {
   try {
     res = request(
       "POST", 
-      registerURL, 
-      {json:{url:'http://localhost:3030/event'}}
+      server, 
+      {json:{url:client}}
     );
   } catch (err) {
     // na console.log(err);
   }
-  console.log("Sent "+res.getBody('utf-8')+" to "+registerURL);
+  console.log("Sent "+res.getBody('utf-8')+" to "+server);
 }

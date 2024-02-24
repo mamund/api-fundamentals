@@ -1,6 +1,6 @@
 // API Fundamentals
 // 2023-08 : mike amundsen (@mamund)
-// style: Webhooks (client A)
+// style: Webhooks (client B)
 
 const request = require('sync-request');
 const express = require('express');
@@ -11,9 +11,9 @@ const app = express();
 app.use(bodyParser.json());
 
 const registerURL = "http://localhost:3020/webhook";
-const url = "http://localhost:3040/event"
+const thisURL = "http://localhost:3040/event"
 
-registerClient();
+registerClient(registerURL,thisURL);
 
 /**********************************************
   HTTP processing
@@ -23,7 +23,7 @@ registerClient();
 app.post('/event', (req, res) => {
 
   console.log("Event notice received.");
-  console.log(req.body);
+  console.log(JSON.stringify(req.body,null,2));
   console.log("");
   
   res.status(200).send("OK");
@@ -35,16 +35,16 @@ app.listen(PORT, () => {
     console.log(`Webhook client-B listening on port ${PORT}`);
 });
 
-// register this cliennt for alerts
-function registerClient() {
+// register this client for alerts
+function registerClient(server,client) {
   try {
     res = request(
       "POST", 
-      registerURL, 
-      {json:{url:'http://localhost:3040/event'}}
+      server, 
+      {json:{url:client}}
     );
   } catch (err) {
     // na console.log(err);
   }
-  console.log("Sent "+res.getBody('utf-8')+" to "+registerURL);
+  console.log("Sent "+res.getBody('utf-8')+" to "+server);
 }
