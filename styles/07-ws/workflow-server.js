@@ -4,6 +4,7 @@
 
 const WebSocketServer = require('ws');
 const PORT = 3030;
+var clients = [];
 
 /************************************************
   WSS handling
@@ -25,9 +26,10 @@ wss.on("connection", ws => {
       }      
       msg = updateWorkflow(msg);
       
-      // send out resulting message
-      ws.send(JSON.stringify(msg));
-      
+      // broadcast resulting message to clients
+      wss.clients.forEach(function each(client) {
+        client.send(JSON.stringify(msg));
+      });      
     });
  
     ws.on("close", () => {

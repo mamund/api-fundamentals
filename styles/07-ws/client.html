@@ -2,23 +2,31 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>API Fundamentals WS</title>
+	<title>Workflow Monitor</title>
 </head>
 <body>
-	<h1>API Fundamentals (WS)</h1>
+	<h1>Workflow Monitor</h1>
+	
   <p id="output"></p>
 
   <script>
+    /***************************************************
+     connect to workflow server and monitor messages
+    ***************************************************/
     const PORT = 3030;
     const ws = new WebSocket("ws://localhost:"+PORT);
     var p = document.getElementById("output");
 
-    ws.addEventListener("open", () =>{
-      ws.send("How are you?");
+    ws.addEventListener('open', function (event) {
+      p.innerText = "Connected to workflow server."  ;
     });
  
     ws.addEventListener('message', function (event) {
       p.innerText = event.data;
+    });
+
+    ws.addEventListener('close', function (event) {
+      p.innerText = "Connection closed.";
     });
   </script>
 </body>
