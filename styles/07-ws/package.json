@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "client.js",
   "scripts": {
-    "server": "node server.js",
-    "client": "node client.js"
+    "server": "node workflow-server.js",
+    "client": "node process-client.js"
   },
   "devDependencies": {},
   "keywords": [],
