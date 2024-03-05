@@ -7,7 +7,7 @@
 <body>
 	<h1>Workflow Monitor</h1>
 	
-  <p id="output"></p>
+  <pre id="output" style="font-family:monospace;"></pre>
 
   <script>
     /***************************************************
@@ -22,7 +22,8 @@
     });
  
     ws.addEventListener('message', function (event) {
-      p.innerText = event.data;
+      var block = JSON.parse(event.data);
+      p.innerText = JSON.stringify(block, null, 2);
     });
 
     ws.addEventListener('close', function (event) {
