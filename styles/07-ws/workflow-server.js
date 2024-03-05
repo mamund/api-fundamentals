@@ -4,7 +4,6 @@
 
 const WebSocketServer = require('ws');
 const PORT = 3030;
-var clients = [];
 
 /************************************************
   WSS handling
