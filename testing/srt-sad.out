@@ -1,0 +1,100 @@
+
+Simple Request Tests (SRTs)
+================================
+Fri 08 Mar 2024 07:58:53 PM EST
+
+reading input file: srt-sad.txt...
+
+start API service...
+
+sleeping...
+
+> rest@1.0.0 local
+> node index
+
+listening on port 3000
+
+start request run...
+
+http://localhost:3000/welcome/xxxxxx
+{
+  "error": {
+    "status": 404,
+    "message": "Unable to locate record."
+  }
+}
+STATUS: 404
+
+
+http://localhost:3000/welcome/ -X POST
+{
+  "error": {
+    "status": 400,
+    "message": "Missing arguments: who and where are required"
+  }
+}
+STATUS: 400
+
+
+http://localhost:3000/welcome/ -X POST -d who=ME
+{
+  "error": {
+    "status": 400,
+    "message": "Missing arguments: who and where are required"
+  }
+}
+STATUS: 400
+
+
+http://localhost:3000/welcome/ -X POST -d where=THERE
+{
+  "error": {
+    "status": 400,
+    "message": "Missing arguments: who and where are required"
+  }
+}
+STATUS: 400
+
+
+http://localhost:3000/welcome/w2e3r4 -X PUT -d who=YOU
+{
+  "id": "w2e3r4",
+  "hello": {
+    "who": "YOU",
+    "where": "THERE"
+  },
+  "error": {
+    "status": 400,
+    "message": "Missing arguments: who and where are required"
+  }
+}
+STATUS: 400
+
+
+http://localhost:3000/welcome/w2e3r4 -X PUT -d where=THERE
+{
+  "id": "w2e3r4",
+  "hello": {
+    "who": "YOU",
+    "where": "THERE"
+  },
+  "error": {
+    "status": 400,
+    "message": "Missing arguments: who and where are required"
+  }
+}
+STATUS: 400
+
+
+http://localhost:3000/welcome/xxxxxx -X DELETE 
+{
+  "error": {
+    "status": 404,
+    "message": "Unable to locate record."
+  }
+}
+STATUS: 404
+
+
+job completed.
+

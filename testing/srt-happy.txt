@@ -1,0 +1,22 @@
+# **********************************************************
+# welcome api 
+# simple test requests (SRTs)
+# 2023-07 API Fundamentals
+# @mamund
+# **********************************************************
+
+# happy path (should all return 2xx)
+http://localhost:3000/
+http://localhost:3000/welcome/
+http://localhost:3000/welcome/ -X POST -d who=THEY&where=SOMEWHERE 
+http://localhost:3000/welcome/q1w2e3 
+http://localhost:3000/welcome/q1w2e3 -X PUT -d who=ALL&where=NOWHERE 
+http://localhost:3000/welcome/q1w2e3 -X DELETE
+
+# extra args should be ignored
+http://localhost:3000/welcome/ -X POST -d who=WE&where=EVERYWHERE&why=FUN 
+
+#
+# EOF
+#
+

@@ -1,0 +1,117 @@
+
+Simple Request Tests (SRTs)
+================================
+Fri 08 Mar 2024 07:59:02 PM EST
+
+reading input file: srt-happy.txt...
+
+start API service...
+
+sleeping...
+
+> rest@1.0.0 local
+> node index
+
+listening on port 3000
+
+start request run...
+
+http://localhost:3000/
+{
+  "hello": {
+    "who": ""
+  },
+  "link": {
+    "rel": "welcome",
+    "href": "http://localhost:3000/welcome"
+  }
+}
+STATUS: 200
+
+
+http://localhost:3000/welcome/
+[
+  {
+    "id": "q1w2e3",
+    "hello": {
+      "who": "ME",
+      "where": "HERE"
+    }
+  },
+  {
+    "id": "w2e3r4",
+    "hello": {
+      "who": "YOU",
+      "where": "THERE"
+    }
+  }
+]
+STATUS: 200
+
+
+http://localhost:3000/welcome/ -X POST -d who=THEY&where=SOMEWHERE 
+{
+  "hello": {
+    "who": "THEY",
+    "where": "SOMEWHERE"
+  },
+  "id": "20yu2uiw94x"
+}
+STATUS: 201
+
+
+http://localhost:3000/welcome/q1w2e3 
+{
+  "id": "q1w2e3",
+  "hello": {
+    "who": "ME",
+    "where": "HERE"
+  }
+}
+STATUS: 200
+
+
+http://localhost:3000/welcome/q1w2e3 -X PUT -d who=ALL&where=NOWHERE 
+{
+  "id": "q1w2e3",
+  "hello": {
+    "who": "ALL",
+    "where": "NOWHERE"
+  }
+}
+STATUS: 200
+
+
+http://localhost:3000/welcome/q1w2e3 -X DELETE
+[
+  {
+    "id": "w2e3r4",
+    "hello": {
+      "who": "YOU",
+      "where": "THERE"
+    }
+  },
+  {
+    "hello": {
+      "who": "THEY",
+      "where": "SOMEWHERE"
+    },
+    "id": "20yu2uiw94x"
+  }
+]
+STATUS: 200
+
+
+http://localhost:3000/welcome/ -X POST -d who=WE&where=EVERYWHERE&why=FUN 
+{
+  "hello": {
+    "who": "WE",
+    "where": "EVERYWHERE"
+  },
+  "id": "36v8fo8k6i"
+}
+STATUS: 201
+
+
+job completed.
+
