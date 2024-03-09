@@ -91,9 +91,10 @@ app.put('/welcome/:id', (req, res) => {
   var r = {};
   var rtn = {};
   var args = {};  
-  var id = req.params.id||"";
-  
+  var id = ""
+   
   // get data
+  id = req.params.id||"";
   rtn = records.item(id);
   
   // check data
@@ -129,7 +130,10 @@ app.put('/welcome/:id', (req, res) => {
 // welcome item resource delete
 app.delete('/welcome/:id', (req,res) => {
   var rtn = {};
-  var id = req.params.id||"";
+  var id = ""
+  
+  // try to read record
+  id = req.params.id||"";
   rtn = records.item(req.params.id);
   
   // check data

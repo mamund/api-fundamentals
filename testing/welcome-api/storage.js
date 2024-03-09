@@ -1,5 +1,8 @@
 /***********************************************
-  Storage
+  Storage (for memory only)
+  API Fundamentals
+  2023-08 : mike amundsen 
+  (@mamund)
 ************************************************/
 
 // define storage details

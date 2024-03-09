@@ -13,7 +13,7 @@ http://localhost:3000/welcome/q1w2e3
 http://localhost:3000/welcome/q1w2e3 -X PUT -d who=ALL&where=NOWHERE 
 http://localhost:3000/welcome/q1w2e3 -X DELETE
 
-# extra args should be ignored
+# extra args should be silently ignored
 http://localhost:3000/welcome/ -X POST -d who=WE&where=EVERYWHERE&why=FUN 
 
 #
