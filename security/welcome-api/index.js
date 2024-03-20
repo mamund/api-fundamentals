@@ -163,10 +163,18 @@ app.delete('/welcome/:id', (req,res) => {
   res.status(rtn.error?rtn.error.status:200).send(JSON.stringify(rtn,null,2));
 });
 
+
+// trigger when no route matches. 
+app.use(function (req, res) { 
+    res.status(404).json({ error: "Not Found" }); 
+});
+
 // catch any remaining errors
 app.use((err, req, res, next) => {
   var rtn = {};
-  rtn.name = err.name;
-  rtn.status = err.status;
+  rtn.error = {};
+  rtn.error.status = err.status;
+  rtn.error.message = err.name;
+  console.log(rtn);
   res.status(err.status).send(JSON.stringify(rtn,null,2)+"\n\n");
- })
+ });
