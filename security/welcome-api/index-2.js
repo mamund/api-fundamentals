@@ -1,6 +1,6 @@
 // API Fundamentals
 // 2023-08 : mike amundsen (@mamund)
-// security-2 : writing requires authentication
+// security-2 : only writing requires authentication
 
 const express = require('express')
 const app = express()
@@ -24,7 +24,8 @@ records.init();
 // home response
 var home = {};
 home.hello = {};
-home.hello.who = "";
+home.hello.who = "ALL";
+home.hello.where = "HOME";
 home.link = {rel:"welcome", href:"http://localhost:3000/welcome"};
 
 /********************************************************
@@ -168,7 +169,6 @@ app.use(function (req, res) {
   rtn.error = {};
   rtn.error.status = 404;
   rtn.error.message = "Not Found";
-  console.log(rtn);
   res.status(rtn.error.status).send(JSON.stringify(rtn,null,2)+"\n\n");
 });
 
@@ -178,6 +178,5 @@ app.use((err, req, res, next) => {
   rtn.error = {};
   rtn.error.status = err.status;
   rtn.error.message = err.name;
-  console.log(rtn);
   res.status(rtn.error.status).send(JSON.stringify(rtn,null,2)+"\n\n");
  });
