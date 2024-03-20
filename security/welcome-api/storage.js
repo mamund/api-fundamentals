@@ -14,6 +14,8 @@ var memory = function() {
   function init() {
     records.push({id:"q1w2e3",hello:{who:"ME",where:"HERE"}});
     records.push({id:"w2e3r4",hello:{who:"YOU",where:"THERE"}});      
+    records.push({id:"e3r4t5",hello:{who:"US",where:"SOMEWHERE"}});      
+    records.push({id:"r4t5y6",hello:{who:"THEM",where:"OVERTHERE"}});      
   }
   
   function list () {
