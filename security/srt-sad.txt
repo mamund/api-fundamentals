@@ -1,0 +1,21 @@
+# **********************************************************
+# welcome api 
+# simple test requests (SRTs)
+# 2023-07 API Fundamentals
+# @mamund
+# **********************************************************
+
+# sad path (should all return 4xx or 5xx)
+http://localhost:3000/welcome/xxxxxx
+http://localhost:3000/welcome/ -X POST
+http://localhost:3000/welcome/ -X POST -d who=ME
+http://localhost:3000/welcome/ -X POST -d where=THERE
+http://localhost:3000/welcome/w2e3r4 -X PUT -d who=YOU
+http://localhost:3000/welcome/w2e3r4 -X PUT -d where=THERE
+http://localhost:3000/welcome/xxxxxx -X PUT -d who=YOU&where=THERE
+http://localhost:3000/welcome/xxxxxx -X DELETE 
+
+
+#
+# EOF
+#
