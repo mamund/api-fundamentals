@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "local": "node index"
+    "security": "node index",
+    "security-2" : "node index-2"
   },
   "keywords": [],
   "author": "",

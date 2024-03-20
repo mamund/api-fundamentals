@@ -1,6 +1,6 @@
 // API Fundamentals
 // 2023-08 : mike amundsen (@mamund)
-// requires authentication for all resoruces
+// security-2 : writing requires authentication
 
 const express = require('express')
 const app = express()
@@ -16,7 +16,6 @@ const jwtCheck = auth({
   issuerBaseURL: 'https://mamund.auth0.com/',
   tokenSigningAlg: 'RS256'
 });
-app.use(jwtCheck);
 
 // local data storage
 var records = require('./storage.js');
@@ -50,7 +49,7 @@ app.get('/welcome', (req, res) => {
 });
 
 // welcome list resource create
-app.post('/welcome', (req, res) => {
+app.post('/welcome', jwtCheck, (req, res) => {
   var r = {};
   var rtn = {};
   var args = {};
@@ -97,7 +96,7 @@ app.get('/welcome/:id', (req, res) => {
 });
 
 // welcome item resource update
-app.put('/welcome/:id', (req, res) => {
+app.put('/welcome/:id', jwtCheck, (req, res) => {
   var r = {};
   var rtn = {};
   var args = {};  
@@ -138,7 +137,7 @@ app.put('/welcome/:id', (req, res) => {
 });
 
 // welcome item resource delete
-app.delete('/welcome/:id', (req,res) => {
+app.delete('/welcome/:id', jwtCheck, (req,res) => {
   var rtn = {};
   var id = ""
   
