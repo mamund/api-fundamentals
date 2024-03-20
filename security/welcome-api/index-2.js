@@ -164,7 +164,12 @@ app.delete('/welcome/:id', jwtCheck, (req,res) => {
 
 // trigger when no route matches. 
 app.use(function (req, res) { 
-    res.status(404).json({ error: "Not Found" }); 
+  var rtn = {};
+  rtn.error = {};
+  rtn.error.status = 404;
+  rtn.error.message = "Not Found";
+  console.log(rtn);
+  res.status(rtn.error.status).send(JSON.stringify(rtn,null,2)+"\n\n");
 });
 
 // catch any remaining errors
@@ -174,5 +179,5 @@ app.use((err, req, res, next) => {
   rtn.error.status = err.status;
   rtn.error.message = err.name;
   console.log(rtn);
-  res.status(err.status).send(JSON.stringify(rtn,null,2)+"\n\n");
+  res.status(rtn.error.status).send(JSON.stringify(rtn,null,2)+"\n\n");
  });
