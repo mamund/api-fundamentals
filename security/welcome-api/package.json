@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "security": "node index",
-    "security-2" : "node index-2"
+    "security-key" : "node index-key",
+    "security-all": "node index-all",
+    "security-write" : "node index-write"
   },
   "keywords": [],
   "author": "",
