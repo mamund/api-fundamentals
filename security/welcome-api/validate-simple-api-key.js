@@ -11,12 +11,14 @@ const crypto = require('crypto');
 var apiKey = function() {
   var coll = []
   
+  // generate a new api key
   function generate() {
     var key = crypto.randomUUID();
     coll.push(key);
     return key;
   }
   
+  // validate an existing api key
   function validate(req, res, next) {
     var key = req.headers["api-key"]||"";
     var rtn = false;
@@ -48,25 +50,7 @@ var apiKey = function() {
 
 module.exports = apiKey();
 
-/*
-function validateSimpleAPIKey(req, res, next) {
-  var rtn = false;
-  var key = req.headers["api-key"]||"";
-
-  rtn = false;  
-  keys.forEach(function(item) {
-    if(item == key) {
-      rtn = true;
-    }
-  });    
-  
-  if(rtn === true) {
-    next();
-  }
-  else {
-    res.set("content-type", "application/json");
-    res.status(401).send(JSON.stringify({status:401,message:"Unauthorized."}, null,2));
-  }
-}
-*/
+// 
+// EOF
+//
 

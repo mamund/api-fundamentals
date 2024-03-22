@@ -215,26 +215,4 @@ app.use((err, req, res, next) => {
   rtn.error.message = err.name||"Server Error";
   res.status(rtn.error.status).send(JSON.stringify(rtn,null,2)+"\n\n");
  });
- 
- /*
-// function for middleware api-key validation
-function validAPIKey(req, res, next) {
-  var rtn = false;
-  var key = req.headers["api-key"]||"";
 
-  rtn = false;  
-  keys.forEach(function(item) {
-    if(item == key) {
-      rtn = true;
-    }
-  });    
-  
-  if(rtn === true) {
-    next();
-  }
-  else {
-    res.set("content-type", "application/json");
-    res.status(401).send(JSON.stringify({status:401,message:"Unauthorized."}, null,2));
-  }
-}
-*/ 
