@@ -50,17 +50,17 @@ echo "reading input file: $infile..."
 
 ###################################################
 # start target service
-echo
-echo start API service...
-cd welcome-api/
-npm run local &
-cd ../
+# echo
+# echo start API service...
+# cd welcome-api/
+# npm run local &
+# cd ../
 
 ###################################################
 # allow service to spin up
-echo
-echo sleeping...
-sleep 5 
+# echo
+# echo sleeping...
+# sleep 5 
 
 ###################################################
 # run requests

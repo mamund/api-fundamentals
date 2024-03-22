@@ -43,9 +43,9 @@ app.listen(port, () => {
   console.log(`listening on port ${port}`)
 });
 
-/*******************************************
- open routes -- no api-key needed
-********************************************/
+//*******************************************
+// open routes -- no api-key needed
+
 // home resource
 app.get('/', (req, res) => {
   res.set("content-type", "application/json");
@@ -70,22 +70,21 @@ app.get('/gen-key', (req, res) => {
 });
 */
 
-/*******************************************
- protected routes -- api-key needed
-********************************************/
+// *******************************************
+// protected routes -- api-key needed
 
 // insert validator in express chain
 // to protect the following actions
-app.use(apiKey.validate)
+//app.use(apiKey.validate)
 
 // welcome list resource
-app.get('/welcome', (req, res) => {
+app.get('/welcome', apiKey.validate, (req, res) => {
   res.set("content-type", "application/json");
   res.status(200).send(JSON.stringify(records.list(),null,2));
 });
 
 // welcome list resource create
-app.post('/welcome', (req, res) => {
+app.post('/welcome', apiKey.validate, (req, res) => {
   var r = {};
   var rtn = {};
   var args = {};
@@ -115,7 +114,7 @@ app.post('/welcome', (req, res) => {
 });
 
 // welcome item resource
-app.get('/welcome/:id', (req, res) => {
+app.get('/welcome/:id', apiKey.validate, (req, res) => {
   var rtn = {};
   
   // get data
@@ -132,7 +131,7 @@ app.get('/welcome/:id', (req, res) => {
 });
 
 // welcome item resource update
-app.put('/welcome/:id', (req, res) => {
+app.put('/welcome/:id', apiKey.validate, (req, res) => {
   var r = {};
   var rtn = {};
   var args = {};  
@@ -173,7 +172,7 @@ app.put('/welcome/:id', (req, res) => {
 });
 
 // welcome item resource delete
-app.delete('/welcome/:id', (req,res) => {
+app.delete('/welcome/:id', apiKey.validate, (req,res) => {
   var rtn = {};
   var id = ""
   
