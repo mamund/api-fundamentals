@@ -74,8 +74,9 @@ app.get('/gen-key', (req, res) => {
 // protected routes -- api-key needed
 
 // insert validator in express chain
-// to protect the following actions
-//app.use(apiKey.validate)
+// - to protect all the following actions
+// app.use(apiKey.validate)
+// - or add apiKey.validate to each route you want to protect
 
 // welcome list resource
 app.get('/welcome', apiKey.validate, (req, res) => {
