@@ -35,7 +35,7 @@ var apiKey = function() {
     }
     else {
       res.set("content-type", "application/json");
-      res.status(401).send(JSON.stringify({status:401,message:"Unauthorized."}, null,2));
+      res.status(401).send(JSON.stringify({error:{status:401,message:"Unauthorized. Missing/Invalid API Key"}}, null,2)+"\n\n");
     }  
   }
   
