@@ -1,0 +1,116 @@
+{
+  "$schema": "https://alps-io.github.io/schemas/alps.json",
+  "alps": {
+    "version": "1.0",
+    "title": "TO-DO List API",
+    "doc": {"value": "A simple command-line app to help people keep track of things to do."},
+
+    "descriptor": [
+      {"id": "id", "type": "semantic", "def": "https://schema.org/identifier",
+        "title": "Id of the record.",
+        "tag":"ontology",
+        "doc": {"value": "The Id of the record."}
+      },
+      {"id": "title", "type": "semantic", "def": "https://schema.org/title",
+        "title":"The title of the job.",
+        "tag":"ontology",
+        "doc": {"value": "The title of the job."}
+      },
+      {"id": "status", "type": "semantic", "def": "https://schema.org/status",
+        "title":"Status of the person record (pending, completed)",
+        "tag":"ontology",
+        "doc": {"value": "Status of the person record (pending, completed)"}
+      },
+      
+      {"id": "todo", "type": "semantic",
+        "title":"The properties of a TODO record",
+        "tag":"ontology taxonomy", 
+        "descriptor": [
+          {"href": "#id"},
+          {"href": "#title"},
+          {"href": "#status"}
+        ],
+        "doc" : {"value": "The properties of a TODO record"}
+      },
+      
+      {"id": "home", "type": "semantic",
+        "title":"Home (starting point) of the TODO service",
+        "tag":"taxonomy", 
+        "descriptor": [
+         {"href": "#goHome"},
+         {"href": "#goList"}
+        ],
+        "doc" : {"value" : "Home (starting point) of the TODO service"}
+     },
+     {"id": "collection", "type": "semantic",
+        "title":"List of TODO records",
+        "tag":"taxonomy", 
+        "descriptor": [
+         {"href": "#todo"},
+         {"href": "#goHome"},
+         {"href": "#goList"},
+         {"href": "#goFilter"},
+         {"href": "#doCreate"},
+         {"href": "#goItem"}
+        ],
+        "doc" : {"value" : "List of TODO records"}
+      },
+      {"id": "item", "type": "semantic",
+        "title":"Single TODO record",
+        "tag":"taxonomy", 
+        "descriptor": [
+          {"href": "#todo"},
+          {"href": "#goHome"},
+          {"href": "#goList"},
+          {"href": "#goFilter"},
+          {"href": "#doCompleted"},
+          {"href": "#goItem"}
+        ],
+        "doc" : {"value" : "A single TODO record"}
+      },
+
+      {"id": "goHome", "name": "home", "rel": "self", "type": "safe", "rt":"#home",
+        "title":"Go to the Home resource",
+        "tag":"choreography",
+        "doc": {"value": "A safe, idempotent action to return to the Home document"}
+      },
+      {"id": "goList", "name": "list", "rel": "list", "type": "safe", "rt": "#collection",
+        "title":"Go to the list of TODO records",
+        "tag":"choreography",
+        "doc": {"value": "A safe idempotent action to go to the list of TODO records."}
+      },
+      {"id": "goFilter", "name": "filter", "rel": "filter collection", "type": "safe", "rt": "#collection",
+        "title":"Filter the list of person records",
+        "tag":"choreography",
+        "doc": {"value": "A safe idempotent action to filter the list of TODO records."},
+        "descriptor" : [
+          {"href": "#title"},
+          {"href": "#status"}
+        ]
+      },
+      {"id": "goItem", "name": "item", "rel": "item read", "type": "safe", "rt": "#item",
+        "title":"Go to a single TODO record",
+        "tag":"choreography",
+        "doc": {"value": "A safe idempotent action to go to a single TODO record."}
+      },
+      {"id": "doCreate", "name": "create", "rel": "create collection", "type": "unsafe", "rt": "#collection",
+        "title":"Create a new TODO record",
+        "tag":"choreography",
+        "doc": {"value": "An unsafe non-idempotent action to create a new TODO record."},
+        "descriptor" : [
+          {"href": "#id"},
+          {"href": "#title"},
+          {"href": "#status"}
+        ]
+      },
+      {"id": "doCompleted", "name": "remove", "rel": "remove item", "type": "idempotent", "rt": "#collection",
+        "title":"Mark an existing TODO record as completed",
+        "tag":"choreography",
+        "doc": {"value": "An unsafe idempotent action to mark an existing TODO record as completed."},
+        "descriptor" : [
+          {"href": "#id"}
+        ]
+      }          
+    ] 
+  }   
+}
