@@ -1,0 +1,44 @@
+# Hyper script for TODO API
+# 2024-05 @mamund
+
+# start at home
+CALL WITH-URL http://localhost:8484/
+
+# get the list
+CALL WITH-NAME list
+SHOW PATH $..items.length
+
+# filter the list
+CALL WITH-FORM filter WITH-QUERY {"status":"working"}
+SHOW PATH $..items.length
+
+# add a new record
+STACK PUSH {"id":"t5y6u7","status":"pending","title":"Update documentation"}
+CALL WITH-FORM create WITH-STACK
+
+# see if there is one more record now
+CALL WITH-NAME list
+SHOW PATH $..items.length
+
+# update that same record
+CALL WITH-ID read_t5y6u7
+STACK SET {"dateDue":"2024-09-01"}
+CALL WITH-FORM update WITH-STACK
+
+# change status of the record
+CALL WITH-ID read_t5y6u7
+STACK SET {"status":"completed"}
+CALL WITH-FORM status WITH-STACK
+
+# filter the list (again)
+CALL WITH-FORM filter WITH-QUERY {"status":"completed"}
+SHOW PATH $..items.length
+
+# delete the new record
+CALL WITH-ID read_t5y6u7
+CALL WITH-FORM remove
+
+# go home
+CALL WITH-NAME home
+
+# EOF

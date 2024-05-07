@@ -1,0 +1,14 @@
+# company SRTs
+
+# happy 
+# these should return 200
+http://localhost:8484/
+http://localhost:8484/list/
+http://localhost:8484/filter?status=working
+http://localhost:8484/ -X POST -d id=t5y6u7&status=working&title=testing
+http://localhost:8484/t5y6u7 -X PUT -d id=t5y6u7&status=working&title=toasting
+http://localhost:8484/due/t5y6u7 -X PATCH -d dateDue=2024-09-01
+http://localhost:8484/status/t5y6u7 -X PATCH -d status=completed
+http://localhost:8484/t5y6u7 -X DELETE
+#
+# EOF

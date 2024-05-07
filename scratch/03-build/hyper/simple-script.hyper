@@ -1,0 +1,26 @@
+# HyperLANG Programming Example
+
+# load memory
+STACK PUSH {"id":"q1p0w2o9","companyName":"Me","email":"me@example.com","status":"pending"}
+
+CALL WITH-URL http://localhost:8484/ WITH-ACCEPT application/forms+json
+
+CALL WITH-FORM list WITH-ACCEPT application/forms+json
+SHOW PATH $..items.length # count records in the list
+
+CALL WITH-FORM create WITH-STACK # add a new record using memory
+
+CALL WITH-FORM list WITH-ACCEPT application/forms+json
+SHOW PATH $..items.length # count records in the list
+
+CALL WITH-FORM read_q1p0w2o9 WITH-ACCEPT application/forms+json
+CALL WITH-FORM remove_q1p0w2o9 # remove added record
+
+CALL WITH-FORM list WITH-ACCEPT application/forms+json
+SHOW PATH $..items.length # count records in the list
+
+STACK POP # clear memory & leave
+EXIT
+
+# EOF
+

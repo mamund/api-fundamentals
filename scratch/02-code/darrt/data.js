@@ -17,6 +17,6 @@ exports.reqd = ['id','title','status'];
 
 // enumerated properties
 exports.enums = [
-  {status:['pending','completed']}
+  {status:['pending','working','completed']}
 ];
 
