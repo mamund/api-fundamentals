@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>doCompleted (idempotent)</title>
+    <title>doUpdate (idempotent)</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
     <style>
@@ -23,13 +23,13 @@
     <div class="markdown-body">
         <p>TO-DO List API: Semantic Descriptor</p>
 
-<h1>doCompleted</h1>
+<h1>doUpdate</h1>
 
 <ul>
 <li>type: idempotent</li>
-<li>title: Mark an existing TODO record as completed</li>
-<li>doc: An unsafe idempotent action to mark an existing TODO record as completed.</li>
-<li>rel: remove item</li>
+<li>title: Update an existing TODO record</li>
+<li>doc: An unsafe idempotent action to update an existing TODO record.</li>
+<li>rel: update item</li>
 <li>tag: <a href="tag.choreography.html">choreography</a></li>
 <li>rt: <a href="semantic.collection.html">collection</a></li>
 <li>descriptor</li>
@@ -48,6 +48,21 @@
   <td><a href="semantic.id.html">id</a></td>
   <td>semantic</td>
   <td>Id of the record.</td>
+</tr>
+<tr>
+  <td><a href="semantic.title.html">title</a></td>
+  <td>semantic</td>
+  <td>The title of the job.</td>
+</tr>
+<tr>
+  <td><a href="semantic.dateDue.html">dateDue</a></td>
+  <td>semantic</td>
+  <td>Due date for an existing TODO record (simple: YYYY-MM-DD)</td>
+</tr>
+<tr>
+  <td><a href="semantic.status.html">status</a></td>
+  <td>semantic</td>
+  <td>Status of the person record (pending, completed)</td>
 </tr>
 </tbody>
 </table>

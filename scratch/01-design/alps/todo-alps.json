@@ -16,6 +16,11 @@
         "tag":"ontology",
         "doc": {"value": "The title of the job."}
       },
+      {"id": "dateDue", "type": "semantic", "def": "https://schema.org/Date",
+        "title":"Due date for an existing TODO record (simple: YYYY-MM-DD)",
+        "tag":"ontology",
+        "doc": {"value": "Due datae for an existing TODO record (simple: YYYY-MM-DD)"}
+      },
       {"id": "status", "type": "semantic", "def": "https://schema.org/status",
         "title":"Status of the person record (pending, completed)",
         "tag":"ontology",
@@ -28,6 +33,7 @@
         "descriptor": [
           {"href": "#id"},
           {"href": "#title"},
+          {"href": "#dateDue"},
           {"href": "#status"}
         ],
         "doc" : {"value": "The properties of a TODO record"}
@@ -63,7 +69,8 @@
           {"href": "#goHome"},
           {"href": "#goList"},
           {"href": "#goFilter"},
-          {"href": "#doCompleted"},
+          {"href": "#doDue"},
+          {"href": "#doStatus"},
           {"href": "#goItem"}
         ],
         "doc" : {"value" : "A single TODO record"}
@@ -85,6 +92,7 @@
         "doc": {"value": "A safe idempotent action to filter the list of TODO records."},
         "descriptor" : [
           {"href": "#title"},
+          {"href": "#dateDue"},
           {"href": "#status"}
         ]
       },
@@ -100,15 +108,37 @@
         "descriptor" : [
           {"href": "#id"},
           {"href": "#title"},
+          {"href": "#dateDue"},
           {"href": "#status"}
         ]
       },
-      {"id": "doCompleted", "name": "remove", "rel": "remove item", "type": "idempotent", "rt": "#collection",
-        "title":"Mark an existing TODO record as completed",
+      {"id": "doUpdate", "name": "update", "rel": "update item", "type": "idempotent", "rt": "#collection",
+        "title":"Update an existing TODO record",
         "tag":"choreography",
-        "doc": {"value": "An unsafe idempotent action to mark an existing TODO record as completed."},
+        "doc": {"value": "An unsafe idempotent action to update an existing TODO record."},
         "descriptor" : [
-          {"href": "#id"}
+          {"href": "#id"},
+          {"href": "#title"},
+          {"href": "#dateDue"},
+          {"href": "#status"}
+        ]
+      },
+      {"id": "doStatus", "name": "status", "rel": "stdatus item", "type": "idempotent", "rt": "#collection",
+        "title":"Update the status value of an existing TODO record.",
+        "tag":"choreography",
+        "doc": {"value": "An unsafe idempotent action to change the status of an existing TODO record."},
+        "descriptor" : [
+          {"href": "#id"},
+          {"href": "#status"}
+        ]
+      },          
+      {"id": "doDue", "name": "due", "rel": "due item", "type": "idempotent", "rt": "#collection",
+        "title":"Update the due date value of an existing TODO record.",
+        "tag":"choreography",
+        "doc": {"value": "An unsafe idempotent action to change the due date of an existing TODO record."},
+        "descriptor" : [
+          {"href": "#id"},
+          {"href": "#dateDue"}
         ]
       }          
     ] 

@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-    <title>goFilter (safe)</title>
+    <title>doDue (idempotent)</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css">
     <style>
@@ -23,13 +23,13 @@
     <div class="markdown-body">
         <p>TO-DO List API: Semantic Descriptor</p>
 
-<h1>goFilter</h1>
+<h1>doDue</h1>
 
 <ul>
-<li>type: safe</li>
-<li>title: Filter the list of person records</li>
-<li>doc: A safe idempotent action to filter the list of TODO records.</li>
-<li>rel: filter collection</li>
+<li>type: idempotent</li>
+<li>title: Update the due date value of an existing TODO record.</li>
+<li>doc: An unsafe idempotent action to change the due date of an existing TODO record.</li>
+<li>rel: due item</li>
 <li>tag: <a href="tag.choreography.html">choreography</a></li>
 <li>rt: <a href="semantic.collection.html">collection</a></li>
 <li>descriptor</li>
@@ -45,19 +45,14 @@
 </thead>
 <tbody>
 <tr>
-  <td><a href="semantic.title.html">title</a></td>
+  <td><a href="semantic.id.html">id</a></td>
   <td>semantic</td>
-  <td>The title of the job.</td>
+  <td>Id of the record.</td>
 </tr>
 <tr>
   <td><a href="semantic.dateDue.html">dateDue</a></td>
   <td>semantic</td>
   <td>Due date for an existing TODO record (simple: YYYY-MM-DD)</td>
-</tr>
-<tr>
-  <td><a href="semantic.status.html">status</a></td>
-  <td>semantic</td>
-  <td>Status of the person record (pending, completed)</td>
 </tr>
 </tbody>
 </table>

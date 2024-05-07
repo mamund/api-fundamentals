@@ -2,10 +2,9 @@
 
 A simple API to help people keep track of things to do.
 
-```
-npm install
-npm start
-```
+* [TODO API Story](todo-story.md)
+* [TODO Vocabulary](todo-vocabulary.md)
+* [TODO ALPS Document](alps/index.html)
 
 See also:
  * [Design](../01-design/README.md)

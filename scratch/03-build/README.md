@@ -1,10 +1,10 @@
-# TO-DO API Design
+# TO-DO API
 
 A simple API to help people keep track of things to do.
 
+## Testing
 ```
-npm install
-npm start
+./srt.sh todo-list.txt
 ```
 
 See also:

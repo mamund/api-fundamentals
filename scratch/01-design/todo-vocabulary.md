@@ -3,14 +3,16 @@
 ## Propertes
 - ID [R] _string_
 - title [R] _string_
-- status [R] see enumerations, defaults to `pending`
+- dateDue [O] _simple date: *YYYY-MM-DD*_
+- status [R] see enumerations
 
 ## Actions
 - list
-- filter (title[partial], status[enum])
-- add (title, status)
-- update (id, title, status)
-- markCompleted (id)
+- filter (title[partial], dateDue[partial per format], status[enum])
+- create (title, status)
+- update (id, title, dateDue, status)
+- status (id, status)
+- due (id, dateDue)
 
 ## Enumerations
 - status: [pending, working, completed]
