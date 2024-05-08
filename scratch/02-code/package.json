@@ -1,7 +1,7 @@
 {
-  "name": "company",
+  "name": "todo",
   "version": "1.0.0",
-  "description": "company service for BigCo, Inc.",
+  "description": "TODO service for BigCo, Inc.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,20 +11,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/api-tool-kit/company.git"
+    "url": "git+https://github.com/mamund/api-fundamentals.git"
   },
   "keywords": [
     "mamund",
-    "apitoolkit",
+    "api",
     "bigco",
-    "pragprog"
+    "apiFundamentals"
   ],
   "author": "Mike Amundsen (@mamund)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/api-tool-kit/company/issues"
+    "url": "https://github.com/mamund/api-fundamentals/issues"
   },
-  "homepage": "https://github.com/api-tool-kit/company#readme",
+  "homepage": "https://github.com/mamund/api-fundamentals#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
