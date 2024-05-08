@@ -15,6 +15,11 @@ var port = process.env.PORT || 8484;
 app.use(cors());
 app.options('*',cors()); 
 
+// use to gen/call api keys
+// demo only, no persisted storage
+var apiKey = require("./validate-simple-api-key.js");
+app.use(apiKey.validate);
+
 // point to exposed resources for this API
 app.use('/',resources); 
 
