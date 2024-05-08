@@ -9,5 +9,5 @@ The data model is simple. Each TO-DO record will have a unique identifier, a tit
 ## Actions
 Users will be able to add new TO-DO records, update an existing record's title, change its status, and set/update the due date. Users will also be able to list all the records on file and filter that list using the title, date due, and status.
 
-## Notes
+## Processing
 Users will be able to set the unique identifier of a record when they create it. If they don't supply an identifier, one will be created for them. If the identifier is already on file, the create action will be rejected. 
