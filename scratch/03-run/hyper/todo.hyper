@@ -1,6 +1,9 @@
 # Hyper script for TODO API
 # 2024-05 @mamund
 
+#settings
+CONFIG SET {"verbose":"false"}
+
 # start at home
 CALL WITH-URL http://localhost:8484/ WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 
