@@ -27,7 +27,6 @@ router.use(function timeLog (req, res, next) {
   next()
 });
 
-
 // ***********************************************************
 // public resources for the company service
 // ***********************************************************
@@ -197,7 +196,7 @@ function init() {
   forms = transitions.forms;
 }
 
-// local resourfce handler function
+// local resource handler function
 function respond(args) {
   var request = args.request||null;
   var response = args.response||null;

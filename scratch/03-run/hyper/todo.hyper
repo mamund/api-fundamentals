@@ -2,43 +2,43 @@
 # 2024-05 @mamund
 
 # start at home
-CALL WITH-URL http://localhost:8484/
+CALL WITH-URL http://localhost:8484/ WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 
 # get the list
-CALL WITH-NAME list
+CALL WITH-NAME list WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 SHOW PATH $..items.length
 
 # filter the list
-CALL WITH-FORM filter WITH-QUERY {"status":"working"}
+CALL WITH-FORM filter WITH-QUERY {"status":"working"} WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 SHOW PATH $..items.length
 
 # add a new record
 STACK PUSH {"id":"t5y6u7","status":"pending","title":"Update documentation"}
-CALL WITH-FORM create WITH-STACK
+CALL WITH-FORM create WITH-STACK WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 
 # see if there is one more record now
-CALL WITH-NAME list
+CALL WITH-NAME list WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 SHOW PATH $..items.length
 
 # update that same record
-CALL WITH-ID read_t5y6u7
+CALL WITH-ID read_t5y6u7 WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 STACK SET {"dateDue":"2024-09-01"}
-CALL WITH-FORM update WITH-STACK
+CALL WITH-FORM update WITH-STACK WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 
 # change status of the record
-CALL WITH-ID read_t5y6u7
+CALL WITH-ID read_t5y6u7 WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 STACK SET {"status":"completed"}
-CALL WITH-FORM status WITH-STACK
+CALL WITH-FORM status WITH-STACK WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 
 # filter the list (again)
-CALL WITH-FORM filter WITH-QUERY {"status":"completed"}
+CALL WITH-FORM filter WITH-QUERY {"status":"completed"} WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 SHOW PATH $..items.length
 
 # delete the new record
-CALL WITH-ID read_t5y6u7
-CALL WITH-FORM remove
+CALL WITH-ID read_t5y6u7 WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
+CALL WITH-FORM remove WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 
 # go home
-CALL WITH-NAME home
+CALL WITH-NAME home WITH-HEADERS {"api-key":"60b17492-7b16-47ad-ad77-cc88e0a40b55"}
 
 # EOF

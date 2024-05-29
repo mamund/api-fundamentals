@@ -8,6 +8,7 @@
 
 const crypto = require('crypto');
 
+// preload with a few keys for demo purposes
 var apiKey = function() {
   var coll = [
     '3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b',
@@ -29,7 +30,7 @@ var apiKey = function() {
   function validate(req, res, next) {
     var key = req.headers["api-key"]||"";
     var rtn = false;
-       
+    
     rtn = false;  
     coll.forEach(function(item) {
       if(item === key) {
