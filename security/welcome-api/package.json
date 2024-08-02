@@ -6,7 +6,8 @@
   "scripts": {
     "security-key" : "node index-key",
     "security-all": "node index-all",
-    "security-write" : "node index-write"
+    "security-write" : "node index-write",
+    "security-scope" :"node index-scope"
   },
   "keywords": [],
   "author": "",

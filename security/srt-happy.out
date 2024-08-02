@@ -1,114 +1,92 @@
 
 Simple Request Tests (SRTs)
 ================================
-Sat 09 Mar 2024 05:30:44 PM EST
+Mon 17 Jun 2024 02:34:00 PM EDT
 
 reading input file: srt-happy.txt...
-
-start API service...
-
-sleeping...
-
-> welcome-api@1.0.0 local
-> node index
-
-listening on port 3000
 
 start request run...
 
 http://localhost:3000/
 {
   "hello": {
-    "who": ""
+    "who": "ALL",
+    "where": "HOME"
   },
   "link": {
-    "rel": "welcome",
-    "href": "http://localhost:3000/welcome"
+    "welcome": {
+      "rel": "welcome",
+      "href": "http://localhost:3000/welcome"
+    },
+    "genkey": {
+      "rel": "genkey",
+      "href": "http://localhost:3000/gen-key"
+    }
   }
 }
 STATUS: 200
 
 
-http://localhost:3000/welcome/
-[
-  {
-    "id": "q1w2e3",
-    "hello": {
-      "who": "ME",
-      "where": "HERE"
-    }
-  },
-  {
-    "id": "w2e3r4",
-    "hello": {
-      "who": "YOU",
-      "where": "THERE"
-    }
+http://localhost:3000/welcome/ -H api-key:x3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
+{
+  "error": {
+    "status": 401,
+    "message": "Unauthorized. Missing/Invalid API Key"
   }
-]
-STATUS: 200
+}
 
 
-http://localhost:3000/welcome/ -X POST -d who=THEY&where=SOMEWHERE 
+STATUS: 401
+
+
+http://localhost:3000/welcome/ -X POST -d who=THEY&where=SOMEWHERE  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
 {
   "hello": {
     "who": "THEY",
     "where": "SOMEWHERE"
   },
-  "id": "1gvxx8mffml"
+  "id": "1euls23ass2"
 }
 STATUS: 201
 
 
-http://localhost:3000/welcome/q1w2e3 
+http://localhost:3000/welcome/q1w2e3  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
 {
-  "id": "q1w2e3",
-  "hello": {
-    "who": "ME",
-    "where": "HERE"
+  "error": {
+    "status": 404,
+    "message": "Unable to locate record."
   }
 }
-STATUS: 200
+STATUS: 404
 
 
-http://localhost:3000/welcome/q1w2e3 -X PUT -d who=ALL&where=NOWHERE 
+http://localhost:3000/welcome/q1w2e3 -X PUT -d who=ALL&where=NOWHERE  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
 {
-  "id": "q1w2e3",
-  "hello": {
-    "who": "ALL",
-    "where": "NOWHERE"
+  "error": {
+    "status": 404,
+    "message": "Unable to locate record."
   }
 }
-STATUS: 200
+STATUS: 404
 
 
-http://localhost:3000/welcome/q1w2e3 -X DELETE
-[
-  {
-    "id": "w2e3r4",
-    "hello": {
-      "who": "YOU",
-      "where": "THERE"
-    }
-  },
-  {
-    "hello": {
-      "who": "THEY",
-      "where": "SOMEWHERE"
-    },
-    "id": "1gvxx8mffml"
+http://localhost:3000/welcome/q1w2e3 -X DELETE  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
+{
+  "error": {
+    "status": 404,
+    "message": "Unable to locate record."
   }
-]
-STATUS: 200
+}
+STATUS: 404
 
 
-http://localhost:3000/welcome/ -X POST -d who=WE&where=EVERYWHERE&why=FUN 
+http://localhost:3000/welcome/ -X POST -d who=WE&where=EVERYWHERE&why=FUN  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
 {
   "hello": {
     "who": "WE",
     "where": "EVERYWHERE"
   },
-  "id": "6u0zr1q3xlw"
+  "id": "807kuwidhjk"
 }
 STATUS: 201
 

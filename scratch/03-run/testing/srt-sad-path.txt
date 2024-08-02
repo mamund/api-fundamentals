@@ -20,10 +20,6 @@ http://localhost:8484/ -X POST -d id=12345&title=BadRec&status=broken
 # attempting to update non-existent record
 http://localhost:8484/12345 -X PUT -d id=12345&title=BadRec&status=completed
 
-# these should be PATCH
-http://localhost:8484/status/12345 -X PUT -d id=12345&title=BadRec&status=false
-http://localhost:8484/due/12345 -X PUT -d id=12345&title=BadRec&status=working&dateDue=2025-01-01
-
 #
 # EOF
 #

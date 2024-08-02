@@ -1,0 +1,22 @@
+# **********************************************************
+# welcome api 
+# simple test requests (SRTs)
+# 2023-07 API Fundamentals
+# @mamund
+# **********************************************************
+
+# happy path (should all return 2xx)
+http://localhost:3000/
+http://localhost:3000/welcome/ -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
+http://localhost:3000/welcome/ -X POST -d who=THEY&where=SOMEWHERE  -H api-key:82fdff36f683-4f72-9f13-b82f98b512d8x
+http://localhost:3000/welcome/q1w2e3  -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
+http://localhost:3000/welcome/q1w2e3 -X PUT -d who=ALL&where=NOWHERE  -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
+http://localhost:3000/welcome/q1w2e3 -X DELETE  -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
+
+# extra args should be silently ignored
+http://localhost:3000/welcome/ -X POST -d who=WE&where=EVERYWHERE&why=FUN  -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
+
+#
+# EOF
+#
+

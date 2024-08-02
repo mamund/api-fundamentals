@@ -7,14 +7,14 @@
 
 # happy path (should all return 2xx)
 http://localhost:3000/
-http://localhost:3000/welcome/ -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
-http://localhost:3000/welcome/ -X POST -d who=THEY&where=SOMEWHERE  -H api-key:82fdff36f683-4f72-9f13-b82f98b512d8x
-http://localhost:3000/welcome/q1w2e3  -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
-http://localhost:3000/welcome/q1w2e3 -X PUT -d who=ALL&where=NOWHERE  -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
-http://localhost:3000/welcome/q1w2e3 -X DELETE  -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
+http://localhost:3000/welcome/ -H api-key:x3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
+http://localhost:3000/welcome/ -X POST -d who=THEY&where=SOMEWHERE  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
+http://localhost:3000/welcome/q1w2e3  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
+http://localhost:3000/welcome/q1w2e3 -X PUT -d who=ALL&where=NOWHERE  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
+http://localhost:3000/welcome/q1w2e3 -X DELETE  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
 
 # extra args should be silently ignored
-http://localhost:3000/welcome/ -X POST -d who=WE&where=EVERYWHERE&why=FUN  -H api-key:82fdff36-f683-4f72-9f13-b82f98b512d8x
+http://localhost:3000/welcome/ -X POST -d who=WE&where=EVERYWHERE&why=FUN  -H api-key:3fc1d6fe-c717-4d7b-9eb4-ce8ad50bff1b
 
 #
 # EOF

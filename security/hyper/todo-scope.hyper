@@ -1,0 +1,20 @@
+# Hyper script for TODO API
+# 2024-05 @mamund
+
+#settings
+CONFIG SET {"verbose":"true"}
+
+# OAuth
+OAUTH LOAD
+OAUTH GEN welcome
+
+# start at home
+CALL WITH-URL http://localhost:3000/ WITH-OAUTH welcome
+
+# get the list
+CALL WITH-URL http://localhost:3000/welcome WITH-OAUTH welcome
+
+# add a new record
+CALL WITH-URL http://localhost:3000/welcome WITH-METHOD post WITH-BODY who=MIKE&where=MARS WITH-OAUTH welcome
+
+# EOF

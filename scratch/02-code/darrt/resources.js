@@ -1,6 +1,6 @@
 /*****************************************
-// bigco, inc
-// company resources 
+// BigCo  to-do list
+// todo resources 
 // 2020-02-01 : mamund
  *****************************************/
 

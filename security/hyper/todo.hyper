@@ -1,0 +1,14 @@
+# Hyper script for TODO API
+# 2024-05 @mamund
+
+# settings
+# CONFIG SET {"verbose":"false"}
+
+# generate OAuth topken
+OAUTH LOAD
+OAUTH GENERATE welcome
+
+# start at home
+CALL WITH-URL http://localhost:3000/ WITH-OAUTH welcome 
+
+# EOF

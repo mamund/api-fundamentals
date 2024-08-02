@@ -1,6 +1,6 @@
 /*****************************************
 // bigco, inc 
-// company action elements
+// todo action elements
 // 2020-02-01 : mamund
  *****************************************/
 
