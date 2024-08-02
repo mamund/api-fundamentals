@@ -1,6 +1,6 @@
 # TO-DO Vocabulary
 
-## Propertes
+## Properties
 - ID [R] _string_
 - title [R] _string_
 - dateDue [O] _simple date: *YYYY-MM-DD*_
